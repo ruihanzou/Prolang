@@ -1,0 +1,3 @@
+These are the contexts from file my_file.txt
+Hello World!
+How are you?
