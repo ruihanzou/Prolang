@@ -90,3 +90,85 @@ addAsync(1, 2, success => {
 });
 */
 
+/*var isMomHappy = false; 
+
+//Promise
+var willIGetNewPhone = new Promise(
+    function (resovle, reject) {
+        if (isMomHappy) {
+            var phone = {
+                brand: 'iPhone',
+                color: 'red'
+            };
+            resovle(phone); //fulfilled
+        } else {
+            var reason = new Error('mom is not happy');
+            reject(reason); //reject
+        }
+    }
+);
+
+var askMon = function() {
+    willIGetNewPhone
+    .then(function(fulfilled) {
+        console.log(fulfiled);
+    })
+    .catch(function(error){
+        console.log(error.message);
+    });
+}
+
+askMon(); */
+
+/*let r1, r2,r3;
+function addAsync(num1, num2) {
+    //use ES6 fetch API, which returns a promise
+    return fetch('http://www.example.com?num1=$(num1)&num2=$(num2)')
+             .then(x => x.json());
+}
+
+addAsync(1, 2) 
+   .then(success => {
+       r1 = success;
+       return r1;
+   })
+    .then(success => addAsync(success, 3))
+    .then(success =>{
+        r2 = success;
+        return r2
+    })
+    .then(success => addAsync(success, 4))
+    .then(success => {
+        r3 = success;
+        return r3
+    })
+    .then(success => {
+        console.log('total: ' + success);
+        console.log(r1, r2, r3)
+    });*/
+
+
+var sleep = function(ms) {
+    var promise = new Promise(
+        function (resolve, reject) {
+           setTimeout(function() {
+             resolve('haha');
+           }, ms);
+     });
+    return promise; 
+};
+
+/*sleep(2000)
+   .then(function(result) {
+       console.log(result);
+   });*/ 
+
+/*Promise.all([sleep(10000), sleep(20000)])
+       .then(function() {
+           console.log('ALL DONE')
+       });*/
+
+Promise.race([sleep(10000), sleep(1000)])
+       .then(function() {
+           console.log('whatwhatwhat')
+       });
